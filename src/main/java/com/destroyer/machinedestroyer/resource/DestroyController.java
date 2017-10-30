@@ -13,21 +13,21 @@ import java.util.logging.Logger;
 import com.destroyer.machinedestroyer.service.MonteCarloPI;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController("/destroy")
 public class DestroyController {
 
-	private static final Map<Long, String> map = new HashMap<Long, String>();
+	private static Map<Long, String> map = new HashMap<Long, String>();
 	private static long memoryCount = 0;
 	private final static BigDecimal POINTS = new BigDecimal("200000000");
 
 	@Value("${app.memory.text}")
 	private String memoryText;
 
-	@GetMapping("/memory")
-	public String destroyMemory(int power) {
-
+	@GetMapping("/memory/{power}")
+	public String destroyMemory(@PathVariable int power) {
 		if(power <= 0){
 			power = 1000;
 		}
@@ -43,10 +43,26 @@ public class DestroyController {
 						+ ", Used: " + used
 						+ ", Free: " + free;
 	}
+	
+    @GetMapping("/memory/clean")
+    public String clearMemory() {
+        memoryCount = 0;
+        map = null;
+        map = new HashMap<Long, String>();
 
-	@GetMapping("/cpu")
-	public String destroyCpu(int power) {
+        Runtime rt = Runtime.getRuntime();
+        long total = rt.totalMemory();
+        long free = rt.freeMemory();
+        long used = total - free;
 
+        return "#" + memoryCount++
+                        + ", Total: " + total
+                        + ", Used: " + used
+                        + ", Free: " + free;
+    }
+
+	@GetMapping("/cpu/{power}")
+	public String destroyCpu(@PathVariable int power) {
 		if(power <= 0){
 			power = 10;
 		}
