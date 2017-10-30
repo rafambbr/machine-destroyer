@@ -1,12 +1,3 @@
-/*
-* Copyright 2017 Pernambucanas S.A.
-*************************************************************
-*Nome     : DestroyController.java
-*Autor    : brunopedroso
-*Data     : 30/10/2017
-*Empresa  : Platform Builders
-*************************************************************
-*/
 package com.destroyer.machinedestroyer.resource;
 
 import static java.lang.String.join;
