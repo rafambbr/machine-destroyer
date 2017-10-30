@@ -1,6 +1,8 @@
 package com.destroyer.machinedestroyer.resource;
 
-import java.util.Collections;
+import static java.lang.String.join;
+import static java.util.Collections.nCopies;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController("/destroy")
 public class DestroyController {
 
-	private static final Map map = new HashMap();
+	private static final Map<Long, String> map = new HashMap<Long, String>();
 	private static long memoryCount = 0;
 
 	@Value("${app.memory.text}")
@@ -21,11 +23,9 @@ public class DestroyController {
 	public String destroyMemory(int power) {
 
 		if(power <= 0){
-			power = 10000;
+			power = 1000;
 		}
-		map.put(memoryCount,
-						String.join("",
-						Collections.nCopies(power, memoryText)));
+		map.put(memoryCount, join("", nCopies(power, memoryText)));
 
 		Runtime rt = Runtime.getRuntime();
 		long total = rt.totalMemory();
