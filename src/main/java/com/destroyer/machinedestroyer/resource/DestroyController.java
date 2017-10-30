@@ -35,9 +35,8 @@ public class DestroyController {
 	@Value("${app.memory.text}")
 	private String memoryText;
 
-	@GetMapping("/memory/allocate/{power}")
+	@GetMapping("/memory/{power}")
 	public String destroyMemory(@PathVariable int power) {
-
 		if(power <= 0){
 			power = 1000;
 		}
@@ -71,9 +70,8 @@ public class DestroyController {
                         + ", Free: " + free;
     }
 
-	@GetMapping("/cpu")
-	public String destroyCpu(int power) {
-
+	@GetMapping("/cpu/{power}")
+	public String destroyCpu(@PathVariable int power) {
 		if(power <= 0){
 			power = 10;
 		}
