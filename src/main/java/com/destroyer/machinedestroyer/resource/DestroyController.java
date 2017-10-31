@@ -16,14 +16,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import com.destroyer.machinedestroyer.service.MonteCarloPI;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.destroyer.machinedestroyer.service.MonteCarloPI;
 
 @RestController("/destroy")
 public class DestroyController {
