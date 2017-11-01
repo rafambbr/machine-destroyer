@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>machine-destroyer</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Destroy everything</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -42,6 +42,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>machine-destroyer</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -52,22 +53,14 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>1.0.0</version>
 				<configuration>
-					<forceTags>true</forceTags>
-					<baseImage>java:openjdk-8-jdk-alpine</baseImage>
-					<imageName>app.jar</imageName>
 					<dockerDirectory>src/main/docker</dockerDirectory>
-					<entryPoint>["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]</entryPoint>
-
-					<imageTags>
-						<imageTag>${project.version}</imageTag>
-						<imageTag>latest</imageTag>
-					</imageTags>
+					<imageName>${project.artifactId}</imageName>
 
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
 							<directory>${project.build.directory}</directory>
-							<include>app.jar</include>
+							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
 
