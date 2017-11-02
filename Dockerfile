@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jdk-alpine
+FROM java:8
 VOLUME ["/tmp"]
 RUN sh -c 'touch /app.jar'
 ADD machine-destroyer.jar app.jar
