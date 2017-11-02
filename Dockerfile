@@ -9,7 +9,7 @@ WORKDIR /tmp
 # Copy the current directory contents into the container at /app
 ADD . /tmp
 
-RUN sh -c 'ls ./tmp'
+RUN sh -c 'ls /tmp'
 
 ADD machine-destroyer.jar app.jar
 RUN sh -c 'touch /app.jar'
