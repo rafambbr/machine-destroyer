@@ -4,12 +4,12 @@ VOLUME /tmp
 RUN sh -c 'ls ./var/lib'
 
 # Set the working directory to /app
-WORKDIR /app
+WORKDIR /tmp
 
 # Copy the current directory contents into the container at /app
-ADD . /app
+ADD . /tmp
 
-RUN sh -c 'ls ./app'
+RUN sh -c 'ls ./tmp'
 
 ADD machine-destroyer.jar app.jar
 RUN sh -c 'touch /app.jar'
