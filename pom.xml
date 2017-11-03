@@ -54,7 +54,6 @@
 				<version>1.0.0</version>
 				<configuration>
 					<imageName>${project.build.finalName}</imageName>
-
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -62,7 +61,6 @@
 							<include>${project.build.finalName}.jar</include>
 						</resource>
 					</resources>
-
 				</configuration>
 			</plugin>
 		</plugins>
