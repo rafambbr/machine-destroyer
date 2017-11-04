@@ -1,4 +1,5 @@
 # Description
+ [![Build Status](https://travis-ci.org/bpedroso/machine-destroyer.svg?branch=master)](https://travis-ci.org/bpedroso/machine-destroyer)
 
 Service to consume machine resources. Read a text with 5k letters and add to memory.
 
