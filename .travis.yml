@@ -1,20 +1,14 @@
-sudo: required
+sudo: false
 
 language: java
 
 services:
-  - docker
+- docker
 
 jobs:
   include:
-    # Stage Test - Job 1-2:  Builds against all available Jdks.
-    - stage: build
-      jdk: oraclejdk8
-      script: mvn clean install -U -DskipTests=true
-
-    - stage: test
-      jdk: oraclejdk8
-      script: mvn test
+    - script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    - script: mvn test -B
 
 branches:
   only:
