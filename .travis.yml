@@ -1,0 +1,17 @@
+sudo: false
+
+language: java
+jdk: oraclejdk8
+
+cache:
+  directories:
+  - $HOME/.m2
+
+jobs:
+  include:
+    - stage: verify
+      script: mvn clean verify
+    - stage: build
+      script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true
+    - stage: test
+      script: mvn test
